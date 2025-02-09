@@ -6,6 +6,9 @@
 #include "bibliotecas/ssd1306.h"
 #include "bibliotecas/font.h"
 
+#include "hardware/pio.h"
+#include "ws2818b.pio.h"
+
 const uint8_t led_red_pino = 13;
 const uint8_t led_blue_pino = 12;
 const uint8_t led_green_pino = 11;
@@ -19,11 +22,73 @@ const uint8_t btn_j = 22;
 volatile bool estado_btn_a = false;
 volatile bool estado_btn_b = false;
 
-
 #define I2C_PORT i2c1
 #define I2C_SDA 14
 #define I2C_SCL 15
 #define endereco 0x3C
+
+const uint8_t matriz_pino = 7;
+const uint8_t numero_leds = 25;
+
+double segundo0 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0};
+
+double segundo1 [] = {0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 1.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0};
+
+double segundo2 [] = {1.0, 1.0, 1.0, 0.0, 0.0,
+                      1.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0};
+
+double segundo3 [] = {1.0, 1.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      1.0, 1.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      1.0, 1.0, 1.0, 0.0, 0.0};
+
+double segundo4 [] = {0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 1.0, 1.0, 0.0, 0.0,
+                      1.0, 0.0, 1.0, 0.0, 0.0,
+                      1.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0};
+
+double segundo5 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 0.0, 0.0,
+                      0.0, 1.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 1.0, 1.0, 0.0, 0.0};
+
+double segundo6 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 0.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0};
+
+double segundo7 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 0.0, 0.0, 1.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0};
+
+double segundo8 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0};
+
+double segundo9 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 0.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0};
 
 volatile uint32_t ultimo_tempo = 0;
 
@@ -48,6 +113,11 @@ int main()
   
     ssd1306_fill(&ssd, false);
     ssd1306_send_data(&ssd);
+
+    PIO pio = pio0;
+    int sm = 0;
+    uint offset = pio_add_program(pio, &ws2818b_program);
+    ws2818b_program_init(pio, sm, offset, matriz_pino, 800000);
 
     gpio_set_irq_enabled_with_callback(btn_a, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
     gpio_set_irq_enabled_with_callback(btn_b, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
@@ -87,7 +157,7 @@ int main()
                 printf("entrou\n");
             }
         }
-        sleep_ms(1000);
+        sleep_ms(500);
     }
 }
 

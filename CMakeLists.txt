@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(comunicacao-serial comunicacao-serial.c bibliotecas/ssd1306.c)
+add_executable(comunicacao-serial comunicacao-serial.c bibliotecas/ssd1306.c bibliotecas/ws2818b.pio)
 
 pico_set_program_name(comunicacao-serial "comunicacao-serial")
 pico_set_program_version(comunicacao-serial "0.1")
@@ -44,9 +44,12 @@ pico_set_program_version(comunicacao-serial "0.1")
 pico_enable_stdio_uart(comunicacao-serial 0)
 pico_enable_stdio_usb(comunicacao-serial 1)
 
+pico_generate_pio_header(comunicacao-serial ${CMAKE_CURRENT_LIST_DIR}/bibliotecas/ws2818b.pio)
+
 # Add the standard library to the build
 target_link_libraries(comunicacao-serial
         hardware_i2c
+        hardware_pio
         pico_stdlib)
 
 # Add the standard include files to the build
