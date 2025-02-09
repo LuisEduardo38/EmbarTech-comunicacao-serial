@@ -161,7 +161,7 @@ void ssd1306_draw_char(ssd1306_t *ssd, char c, uint8_t x, uint8_t y)
     } else if (c >= 'A' && c <= 'Z') {
         index = (c - 'A' + 11) * 8;
     } else {
-        return; // Não desenha caracteres inválidos
+        return;
     }
 
     for (uint8_t i = 0; i < 8; ++i) {

@@ -57,30 +57,37 @@ int main()
     while (true) {
         if(stdio_usb_connected){
             char tecla;
-            if(scanf("%c", &tecla) == 1){
+            int tecla_lida = getchar_timeout_us(0);
+            if (tecla_lida != PICO_ERROR_TIMEOUT){
+                tecla = (char)tecla_lida;
                 cor = !cor;
                 ssd1306_fill(&ssd, !cor);
                 ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor);
                 ssd1306_draw_char(&ssd, tecla, 8, 10);
-                if(estado_btn_a == true){
-                    ssd1306_draw_string(&ssd, "VERDE: TRUE", 8, 30);
-                    printf("Verde: TRUE\n");
-                }
-                else{
-                    ssd1306_draw_string(&ssd, "VERDE: FALSE", 8, 30);
-                    printf("Verde: FALSE\n"); 
-                }
-                if(estado_btn_b == true){
-                    ssd1306_draw_string(&ssd, "AZUL: TRUE", 8, 48);
-                    printf("Azul: TRUE\n");
-                }
-                else{
-                    ssd1306_draw_string(&ssd, "AZUL: FALSE", 8, 48);
-                    printf("Azul: FALSE\n");
-                }
-                ssd1306_send_data(&ssd);
+            }
+            if(estado_btn_a == true){
+                ssd1306_draw_string(&ssd, "VERDE: TRUE", 8, 30);
+                printf("Verde: TRUE\n");
+            }
+            else{
+                ssd1306_draw_string(&ssd, "VERDE: FALSE", 8, 30);
+                printf("Verde: FALSE\n"); 
+            }
+            if(estado_btn_b == true){
+                ssd1306_draw_string(&ssd, "AZUL: TRUE", 8, 48);
+                printf("Azul: TRUE\n");
+            }
+            else{
+                ssd1306_draw_string(&ssd, "AZUL: FALSE", 8, 48);
+                printf("Azul: FALSE\n");
+            }
+            ssd1306_send_data(&ssd);
+
+            if((tecla >= '1') && (tecla <= '9')){
+                printf("entrou\n");
             }
         }
+        sleep_ms(1000);
     }
 }
 
@@ -109,6 +116,7 @@ void iniciar_pinos(){
 void gpio_irq_handler(uint gpio, uint32_t events){
     uint32_t tempo_atual = to_ms_since_boot(get_absolute_time());
     if(tempo_atual - ultimo_tempo > 200){
+        ultimo_tempo = tempo_atual;
         if(gpio == 5){
             estado_green = !estado_green;
             estado_btn_a = !estado_btn_a;
