@@ -36,47 +36,47 @@ double segundo0 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
                       0.0, 1.0, 0.0, 1.0, 0.0,
                       0.0, 1.0, 1.0, 1.0, 0.0};
 
-double segundo1 [] = {0.0, 0.0, 1.0, 0.0, 0.0,
+double segundo1 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
                       0.0, 1.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0};
+
+double segundo2 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 0.0, 0.0,
                       0.0, 0.0, 1.0, 0.0, 0.0,
-                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 0.0, 1.0, 0.0,
                       0.0, 1.0, 1.0, 1.0, 0.0};
 
-double segundo2 [] = {1.0, 1.0, 1.0, 0.0, 0.0,
-                      1.0, 0.0, 1.0, 0.0, 0.0,
-                      0.0, 0.0, 1.0, 0.0, 0.0,
-                      0.0, 0.0, 1.0, 0.0, 0.0,
+double segundo3 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 0.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 0.0, 0.0, 1.0, 0.0,
                       0.0, 1.0, 1.0, 1.0, 0.0};
-
-double segundo3 [] = {1.0, 1.0, 1.0, 0.0, 0.0,
-                      0.0, 0.0, 1.0, 0.0, 0.0,
-                      1.0, 1.0, 1.0, 0.0, 0.0,
-                      0.0, 0.0, 1.0, 0.0, 0.0,
-                      1.0, 1.0, 1.0, 0.0, 0.0};
 
 double segundo4 [] = {0.0, 0.0, 1.0, 0.0, 0.0,
-                      0.0, 1.0, 1.0, 0.0, 0.0,
-                      1.0, 0.0, 1.0, 0.0, 0.0,
                       1.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 1.0,
+                      0.0, 1.0, 1.0, 0.0, 0.0,
                       0.0, 0.0, 1.0, 0.0, 0.0};
 
-double segundo5 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+double segundo5 [] = {0.0, 0.0, 1.0, 1.0, 0.0,
+                      0.0, 0.0, 0.0, 1.0, 0.0,
+                      0.0, 0.0, 1.0, 1.0, 0.0,
                       0.0, 1.0, 0.0, 0.0, 0.0,
-                      0.0, 1.0, 1.0, 0.0, 0.0,
-                      0.0, 0.0, 1.0, 0.0, 0.0,
-                      0.0, 1.0, 1.0, 0.0, 0.0};
-
-double segundo6 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
-                      0.0, 1.0, 0.0, 0.0, 0.0,
-                      0.0, 1.0, 1.0, 1.0, 0.0,
-                      0.0, 1.0, 0.0, 1.0, 0.0,
                       0.0, 1.0, 1.0, 1.0, 0.0};
 
-double segundo7 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+double segundo6 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 0.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0};
+
+double segundo7 [] = {0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
+                      0.0, 0.0, 1.0, 0.0, 0.0,
                       0.0, 0.0, 0.0, 1.0, 0.0,
-                      0.0, 0.0, 1.0, 0.0, 0.0,
-                      0.0, 0.0, 1.0, 0.0, 0.0,
-                      0.0, 0.0, 1.0, 0.0, 0.0};
+                      0.0, 1.0, 1.0, 1.0, 0.0};
 
 double segundo8 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
                       0.0, 1.0, 0.0, 1.0, 0.0,
@@ -85,15 +85,17 @@ double segundo8 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
                       0.0, 1.0, 1.0, 1.0, 0.0};
 
 double segundo9 [] = {0.0, 1.0, 1.0, 1.0, 0.0,
-                      0.0, 1.0, 0.0, 1.0, 0.0,
-                      0.0, 1.0, 1.0, 1.0, 0.0,
                       0.0, 0.0, 0.0, 1.0, 0.0,
+                      0.0, 1.0, 1.0, 1.0, 0.0,
+                      0.0, 1.0, 0.0, 1.0, 0.0,
                       0.0, 1.0, 1.0, 1.0, 0.0};
 
 volatile uint32_t ultimo_tempo = 0;
 
 void iniciar_pinos();
 void gpio_irq_handler(uint gpio, uint32_t events);
+void escolha_numero(uint8_t numero, PIO pio, int sm);
+void imprimir_numero(double *numero, PIO pio, int sm);
 
 int main()
 {
@@ -154,7 +156,8 @@ int main()
             ssd1306_send_data(&ssd);
 
             if((tecla >= '1') && (tecla <= '9')){
-                printf("entrou\n");
+                uint8_t numero = tecla - '0';
+                escolha_numero(numero, pio, sm);
             }
         }
         sleep_ms(500);
@@ -200,5 +203,29 @@ void gpio_irq_handler(uint gpio, uint32_t events){
         else if(gpio == 22){
             reset_usb_boot(0, 0);
         }
+    }
+}
+
+void escolha_numero(uint8_t numero, PIO pio, int sm){
+    double *vetor[] = {segundo0, segundo1, segundo2, segundo3, segundo4, 
+                       segundo5, segundo6, segundo7, segundo8, segundo9};
+
+    imprimir_numero(vetor[numero], pio, sm);
+}
+
+void imprimir_numero(double *numero, PIO pio, int sm){
+    uint8_t red, blue, green;
+    red = 100;
+    blue = 0;
+    green = 0;
+
+    for(uint8_t i = 0; i < numero_leds; i++){
+        uint8_t RED = (uint8_t)(red * numero[i]);
+        uint8_t BLUE = (uint8_t)(blue * numero[i]);
+        uint8_t GREEN = (uint8_t)(green * numero[i]);
+
+        pio_sm_put_blocking(pio, sm, GREEN);
+        pio_sm_put_blocking(pio, sm, RED);
+        pio_sm_put_blocking(pio, sm, BLUE);
     }
 }
