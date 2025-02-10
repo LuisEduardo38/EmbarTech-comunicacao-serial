@@ -157,11 +157,16 @@ void ssd1306_draw_char(ssd1306_t *ssd, char c, uint8_t x, uint8_t y)
     uint16_t index = 0;
 
     if (c >= '0' && c <= '9') {
-        index = (c - '0' + 1) * 8;
-    } else if (c >= 'A' && c <= 'Z') {
-        index = (c - 'A' + 11) * 8;
-    } else {
-        return;
+      index = (c - '0' + 1) * 8;
+    } 
+    else if (c >= 'A' && c <= 'Z') {
+      index = (c - 'A' + 11) * 8;
+    }
+    else if (c >= 'a' && c <= 'z') {
+      index = (c - 'a' + 36) * 8;
+    } 
+    else {
+      return;
     }
 
     for (uint8_t i = 0; i < 8; ++i) {
@@ -171,7 +176,6 @@ void ssd1306_draw_char(ssd1306_t *ssd, char c, uint8_t x, uint8_t y)
         }
     }
 
-    // Garante que o display seja atualizado após desenhar o caractere
     ssd1306_send_data(ssd);
 }
 
